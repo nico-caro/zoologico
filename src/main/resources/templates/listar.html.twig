@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block titulo %} Listado animales {% endblock titulo %}
+
+{% block contenido %}
+	<h1>Listado de animales</h1>
+	
+	<table>
+	
+	  <tr>
+	  
+	  <th>Nombre</th>
+	  <th>Peso</th>
+	  <th>Tipo</th>
+	  <th>Género</th>
+	  <th>Fecha Nacimiento </th>
+	  <th>Sector</th>
+	  <th>Fecha Ingreso </th>
+	  <th>Fecha Defunción</th>
+	  <th>Opciones </th>
+	  
+	  </tr>
+	
+	  {% for a in animales %}
+	  
+	  <tr>
+	      
+	      <td>{{ a.getNombre() }}</td>
+	      <td>{{ a.getPeso() }}</td>
+	      <td>{{ a.getTipo().getNombre() }}</td>
+	      <td>{{ a.getGenero() }}</td>
+	      <td>{{ a.getFechaNacimiento() | date('dd-MM-yyyy')  }}</td>
+	      <td>{{ a.getSector().getNombre() }}</td>
+	      <td>{{ a.getFechaIngreso() | date('dd-MM-yyyy') }}</td>
+	      <td>{{ a.getFechaDefuncion() }}</td>
+	      <td>
+	         <a href="eliminar?id={{ a.getCodigo() }}">Eliminar</a>
+	         <a href="editar?id={{ a.getCodigo() }}">Modificar</a>
+	      </td>
+	  </tr>
+
+	  {% endfor  %}
+	</table>
+	<h4>{{ mensaje }}</h4>
+{% endblock contenido %}

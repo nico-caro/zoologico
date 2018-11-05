@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block titulo %} Listado sectores {% endblock titulo %}
+
+{% block contenido %}
+	<h1>Listado de sectores</h1>
+	
+	<table>
+	
+	  <tr>
+	  
+	  <th>Nombre</th>
+	  <th>Descripcion</th>
+	  <th>Opciones </th>
+	  
+	  </tr>
+	
+	  {% for s in sectores %}
+	  
+	  <tr>
+	      
+	      <td>{{ s.getNombre() }}</td>
+	      <td>{{ s.getDescripcion() }}</td>
+	      <td>
+	         <a href="eliminar?id={{ s.getId() }}">Eliminar</a>
+	         <a href="editar?id={{ s.getId() }}">Modificar</a>
+	      </td>
+	  </tr>
+
+	  {% endfor  %}
+	</table>
+	<h4>{{ mensaje }}</h4>
+{% endblock contenido %}

@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block titulo %} Listado Tipos {% endblock titulo %}
+
+{% block contenido %}
+	<h1>Listado de tipos</h1>
+	
+	<table>
+	
+	  <tr>
+	  
+	  <th>Nombre</th>
+	  <th>Descripcion</th>
+	  <th>Opciones </th>
+	  
+	  </tr>
+	
+	  {% for t in tipos %}
+	  
+	  <tr>
+	      
+	      <td>{{ t.getNombre() }}</td>
+	      <td>{{ t.getDescripcion() }}</td>
+	      <td>
+	         <a href="eliminar?id={{ t.getId() }}">Eliminar</a>
+	         <a href="editar?id={{ t.getId() }}">Modificar</a>
+	      </td>
+	  </tr>
+
+	  {% endfor  %}
+	</table>
+	<h4>{{ mensaje }}</h4>
+{% endblock contenido %}

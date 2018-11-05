@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block titulo %} Agregar Sectores {% endblock titulo %}
+
+{% block contenido %}
+
+<h1>Ingreso de sectores</h1>
+        <form action="almacenar" method="POST">
+        <table>
+            <tr>
+                <td>
+                    <label>Nombre </label>
+                </td>
+                <td>
+                    <input type="text" name="txtNombre" id="txtNombre" required minlength="2" maxlength="50">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Descripcion </label>
+                </td>
+                <td>
+                    <input type="text" name="txtDescripcion" id="txtDescripcion" required minlength="3" maxlength="50">
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Guardar" name="btnGuardar" id="btnGuardar">
+                </td>
+            </tr>
+        </table>
+         
+        </form>
+        <h4>{{ mensaje }}</h4>
+
+
+{% endblock contenido %}

@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>
+	  {% block titulo %} {% endblock titulo %}
+	</title>
+</head>
+<body>
+<h1>Zoo Concepción</h1>
+<h3>Bienvenido: {{ username }}</h3>
+
+<a href="/logout">Cerrar sesión</a>
+{% block contenido %}
+
+{% endblock  contenido%}
+</body>
+</html>
+

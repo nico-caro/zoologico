@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %}
+
+{% block titulo %} Modificar Animal {% endblock titulo %}
+
+{% block contenido %}
+
+<h1>Edicion de animales</h1>
+        <form action="actualizar" method="POST">
+        <table>
+            <tr>
+                <td>
+                    <label>Nombre </label>
+                </td>
+                <td>
+                    <input type="hidden" name="txtId" id="txtId" value="{{ a.getCodigo() }}" />
+                    <input type="text" name="txtNombre" id="txtNombre" required minlength="3" maxlength="50" value="{{ a.getNombre() }}">
+                </td>
+            </tr> 
+            <tr>
+                <td>
+                    <label>Peso </label>
+                </td>
+                <td>
+                    <input type="number" name="txtPeso" id="txtPeso" step="0.1" required min="0,1" max="200" value="{{ a.getPeso() }}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Tipo </label>
+                </td>
+                <td>
+                    <select name="cboTipo" id="cboTipo" required>
+                        <option value="">Seleccionar: </option>
+                        {% for tipo in tipos %}
+                        
+                        <option {{ (tipo.getId() == a.getTipo().getId())?'selected':'' }} value="{{ tipo.getId() }}">{{ tipo.getNombre() }}</option>
+                        
+                        {% endfor %}
+                        
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Genero: </label>
+                </td>
+                <td>
+                    <input type="text" name="txtGenero" id="txtGenero" required minlength="3" maxlength="10" value="{{ a.getGenero() }}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Fecha Nacimiento </label>
+                </td>
+                <td>
+                    <input type="date" name="txtFechaNacimiento" id="txtFechaNacimiento" required value="{{ a.getFechaNacimiento() }}">
+                </td>
+            </tr> 
+            <tr>
+                <td>
+                    <label>Sector </label>
+                </td>
+                <td>
+                    <select name="cboSector" id="cboSector" required>
+                        <option value="">Seleccionar: </option>
+                        {% for sector in sectores %}
+                        
+                        <option {{ (sector.getId() == a.getSector().getId())?'selected':'' }} value="{{ sector.getId() }}">{{ sector.getNombre() }}</option>
+                        
+                        {% endfor %}
+                        
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label>Fecha Ingreso </label>
+                </td>
+                <td>
+                    <input type="date" name="txtFechaIngreso" id="txtFechaIngreso" required value="{{ a.getFechaIngreso() }}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Fecha Defuncion </label>
+                </td>
+                <td>
+                    <input type="date" name="txtFechaDefuncion" id="txtFechaDefuncion" value="{{ a.getFechaDefuncion() }}">
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Modificar" name="btnModificar" id="btnModificar">
+                </td>
+            </tr>
+        </table>
+         
+        </form>
+        <h4>{{ mensaje }}</h4>
+
+
+{% endblock contenido %}

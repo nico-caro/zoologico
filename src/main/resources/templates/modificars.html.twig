@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block titulo %} Modificar Sectores {% endblock titulo %}
+
+{% block contenido %}
+
+<h1>Edicion de sectores</h1>
+        <form action="actualizar" method="POST">
+        <table>
+            <tr>
+                <td>
+                    <label>Nombre </label>
+                </td>
+                <td>
+                    <input type="hidden" name="txtId" id="txtId" value="{{ s.getId() }}" />
+                    <input type="text" name="txtNombre" id="txtNombre" required minlength="2" maxlength="50" value="{{ s.getNombre() }}">
+                </td>
+            </tr> 
+            <tr>
+                <td>
+                    <label>Descripcion </label>
+                </td>
+                <td>
+                    <input type="text" name="txtDescripcion" id="txtDescripcion" required minlength="2" maxlength="50" value="{{ s.getDescripcion() }}">
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Modificar" name="btnModificar" id="btnModificar">
+                </td>
+            </tr>
+        </table>
+         
+        </form>
+        <h4>{{ mensaje }}</h4>
+
+
+{% endblock contenido %}
